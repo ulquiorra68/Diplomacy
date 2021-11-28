@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/sound"/>
+    <qresource prefix="/">
+        <file>sound/Medieval Music - Medieval Travelers.mp3</file>
+    </qresource>
+</RCC>
