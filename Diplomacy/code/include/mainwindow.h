@@ -23,7 +23,7 @@ protected:
 
 public slots:
     void onQuit();
-   // void onPlay();
+    void onPlay();
    // void onOptions();
 
 public:
