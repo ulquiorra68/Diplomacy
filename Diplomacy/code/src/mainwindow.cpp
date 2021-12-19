@@ -1,5 +1,6 @@
-#include "mainwindow.h"
+#include "code/include/mainwindow.h"
 #include "ui_mainwindow.h"
+#include "code/include/userswindow.h"
 
 void MainWindow::resizeEvent(QResizeEvent *event) {
     QPixmap bkgnd(":/images/diplomacy.jpg");
@@ -16,12 +17,18 @@ void MainWindow::onQuit()
     close();
 }
 
-
+void MainWindow::onPlay()
+{
+    UsersWindow* uw = new UsersWindow(this);
+    uw->setWindowFlags(Qt::CustomizeWindowHint);
+    uw->setAttribute(Qt::WA_TranslucentBackground);
+    uw->exec();
+}
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , volume(20)
+    , volume(10)
 {
     ui->setupUi(this);
     setMusic();
@@ -87,7 +94,7 @@ void MainWindow::stopBackGroundMusic()
 void MainWindow::setConnects()
 {
     connect(ui->quit_button, &QPushButton::clicked, this, &MainWindow::onQuit);
-   //onnect(ui->play_button, &QPushButton::clicked, this, &MainWindow::onPlay);
+    connect(ui->play_button, &QPushButton::clicked, this, &MainWindow::onPlay);
   //connect(ui->options_button, &QPushButton::clicked, this, &MainWindow::onOptions);
 }
 
@@ -98,7 +105,7 @@ void MainWindow::setMusic()
     backGroundMusic->setAudioOutput(audioOutput);
 
     backGroundMusic->setSource(QUrl("qrc:/sound/Medieval Music - Medieval Travelers.mp3"));
-    audioOutput->setVolume(20);
+    audioOutput->setVolume(10);
 
     backGroundMusic->play();
 }
