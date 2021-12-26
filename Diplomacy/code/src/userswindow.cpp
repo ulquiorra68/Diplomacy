@@ -7,9 +7,9 @@ void UsersWindow::onOk()
 }
 
 
-void UsersWindow::onBack()
+void UsersWindow::onCancel()
 {
-    this->close();
+    delete this;
 }
 
 UsersWindow::UsersWindow(MainWindow *parent) :
@@ -19,8 +19,8 @@ UsersWindow::UsersWindow(MainWindow *parent) :
 {
     ui->setupUi(this);
 
-//    connect(ui->back_button_3, &QPushButton::clicked, this, &UsersWindow::onBack);
-//    connect(ui->ok_button_3, &QPushButton::clicked, this, &UsersWindow::onOk);
+    connect(ui->cancel_button, &QPushButton::clicked, this, &UsersWindow::onCancel);
+    connect(ui->ok_button, &QPushButton::clicked, this, &UsersWindow::onOk);
 }
 
 UsersWindow::~UsersWindow()

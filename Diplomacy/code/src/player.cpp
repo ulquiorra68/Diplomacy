@@ -31,28 +31,63 @@ void Player::setOwnerInd(bool newOwnerInd)
 }
 
 
-//void Player::addTerritory(Territory *t)
-//{
-//    p_territories.insert(t);
-//}
+void Player::addTerritory(Territory *t)
+{
+    p_territories.insert(t);
+}
 
-//void Player::removeTerritory(Territory *t)
-//{
-//    auto wanted = p_territories.find(t);
-//    p_territories.erase(wanted);
-//}
+void Player::removeTerritory(Territory *t)
+{
+    auto wanted = p_territories.find(t);
+    p_territories.erase(wanted);
+}
 
-//std::int32_t Player::numOfTerritories() const
-//{
-//    return p_territories.size();
-//}
+std::int32_t Player::numOfTerritories() const
+{
+    return p_territories.size();
+}
 
-//const std::unordered_set<Territory *> &Player::territories() const
-//{
-//    return p_territories;
-//}
+void Player::setGold(int numOfGold)
+{
+    p_gold = numOfGold;
+}
 
-//void Player::setTerritories(const std::unordered_set<Territory *> &newTerritories)
-//{
-//    p_territories = newTerritories;
-//}
+void Player::increaseGold(int amount)
+{
+    p_gold += amount;
+}
+
+void Player::decreaseGold(int amount)
+{
+    p_gold -= amount;
+}
+
+bool Player::wantsToAttack()
+{
+    return p_wantsToAttack;
+}
+
+void Player::setWantsToAttack(bool flag)
+{
+    p_wantsToAttack = flag;
+}
+
+bool Player::wantsToOffer()
+{
+    return p_wantsToOffer;
+}
+
+void Player::setWantsToOffer(bool flag)
+{
+    p_wantsToOffer = flag;
+}
+
+const std::unordered_set<Territory *> &Player::territories() const
+{
+    return p_territories;
+}
+
+void Player::setTerritories(const std::unordered_set<Territory *> &newTerritories)
+{
+    p_territories = newTerritories;
+}

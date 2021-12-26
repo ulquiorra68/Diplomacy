@@ -14,7 +14,7 @@ class UsersWindow : public QDialog
 
 public slots:
     void onOk();
-    void onBack();
+    void onCancel();
 
 public:
     UsersWindow(MainWindow *parent = nullptr);
