@@ -36,6 +36,7 @@ public:
     void setName(const std::string &newName);
     Color color() const;
     void setColor(Color newColor);
+    Color getColor() { return p_color; };
 //    std::int32_t numOfTerritories() const;
     bool ownerInd() const;
     void setOwnerInd(bool newOwnerInd);
