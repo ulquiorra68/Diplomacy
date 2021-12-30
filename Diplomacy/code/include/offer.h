@@ -7,13 +7,25 @@
 class Offer
 {
 private:
-    Player* p;
+    Player* p_offering;
+
+    vector<Player*> p_players;
+
+    Territory* p_territory;
+
     int p_cost;
+    bool p_accepted;
+
 public:
-    Offer(Player* p1, Player* p2);
+    Offer(Player* p1, Territory* t, int gold);
     ~Offer();
 
-    bool makeAnOffer(Player* p1, Player* p2, Territory t, int gold);
+    void setCost(int amount);
+    int getCost();
+    void setAcceped(bool flag);
+    bool getAccepted();
+
+    Player* makeAnOffer(Player* p, Territory* t, int gold);
 };
 
 #endif // OFFER_H
