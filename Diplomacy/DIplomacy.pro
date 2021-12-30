@@ -10,9 +10,11 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    code/src/Territory.cpp \
     code/src/game.cpp \
     code/src/main.cpp \
     code/src/mainwindow.cpp \
+    code/src/offer.cpp \
     code/src/player.cpp \
     code/src/userswindow.cpp
 
