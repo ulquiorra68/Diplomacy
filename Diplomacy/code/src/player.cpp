@@ -52,6 +52,11 @@ void Player::setGold(int numOfGold)
     p_gold = numOfGold;
 }
 
+int Player::getGold()
+{
+    return p_gold;
+}
+
 void Player::increaseGold(int amount)
 {
     p_gold += amount;
@@ -82,6 +87,16 @@ void Player::setWantsToOffer(bool flag)
     p_wantsToOffer = flag;
 }
 
+bool Player::wantsToHelp()
+{
+    return p_wantsToHelp;
+}
+
+void Player::setWantsToHelp(bool flag)
+{
+    p_wantsToHelp = flag;
+}
+
 const std::unordered_set<Territory *> &Player::territories() const
 {
     return p_territories;
@@ -90,4 +105,13 @@ const std::unordered_set<Territory *> &Player::territories() const
 void Player::setTerritories(const std::unordered_set<Territory *> &newTerritories)
 {
     p_territories = newTerritories;
+}
+
+Player::Player(const string &name, Color color, bool ownerInd) : p_name(name),
+    p_color(color),
+    p_ownerInd(ownerInd)
+{
+    p_gold = 30;
+    p_wantsToAttack = p_wantsToHelp = p_wantsToOffer = false;
+    p_territories = unordered_set<Territory *>();
 }
