@@ -12,10 +12,13 @@ CONFIG += c++17
 SOURCES += \
     code/src/Territory.cpp \
     code/src/game.cpp \
+    code/src/gamewindow.cpp \
     code/src/main.cpp \
     code/src/mainwindow.cpp \
+    code/src/numberwindow.cpp \
     code/src/offer.cpp \
     code/src/player.cpp \
+    code/src/settings.cpp \
     code/src/userswindow.cpp
 
 HEADERS += \
@@ -23,13 +26,18 @@ HEADERS += \
     code/include/Nation.h \
     code/include/Territory.h \
     code/include/game.h \
+    code/include/gamewindow.h \
     code/include/mainwindow.h \
+    code/include/numberwindow.h \
     code/include/offer.h \
     code/include/player.h \
+    code/include/settings.h \
     code/include/userswindow.h
 
 FORMS += \
+    forms/gamewindow.ui \
     forms/mainwindow.ui \
+    forms/numberwindow.ui \
     forms/userswindow.ui \
     forms/userswindow.ui
 

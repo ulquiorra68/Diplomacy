@@ -1,6 +1,8 @@
 #include "code/include/mainwindow.h"
 #include "ui_mainwindow.h"
 #include "code/include/userswindow.h"
+#include "code/include/numberwindow.h"
+#include "code/include/gamewindow.h"
 
 void MainWindow::resizeEvent(QResizeEvent *event) {
     QPixmap bkgnd(":/images/diplomacy.jpg");
@@ -19,10 +21,16 @@ void MainWindow::onQuit()
 
 void MainWindow::onPlay()
 {
-    UsersWindow* uw = new UsersWindow(this);
-    uw->setWindowFlags(Qt::CustomizeWindowHint);
-    uw->setAttribute(Qt::WA_TranslucentBackground);
-    uw->exec();
+    NumberWindow* nw = new NumberWindow(this);
+    nw->setWindowFlags(Qt::CustomizeWindowHint);
+    nw->setAttribute(Qt::WA_TranslucentBackground);
+    nw->exec();
+
+    if (nw->ready())
+    {
+        openGameWindow();
+        nw->setReady(false);
+    }
 }
 
 MainWindow::MainWindow(QWidget *parent)
@@ -43,6 +51,14 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::openGameWindow()
+{
+    GameWindow* gw = new GameWindow(this);
+
+    gw->setWindowFlags(Qt::Window);
+    gw->showFullScreen();
 }
 
 int MainWindow::getHeight() const

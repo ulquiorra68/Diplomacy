@@ -3,5 +3,6 @@
     <qresource prefix="/">
         <file>images/button.jpg</file>
         <file>images/diplomacy.jpg</file>
+        <file>images/map.jpg</file>
     </qresource>
 </RCC>

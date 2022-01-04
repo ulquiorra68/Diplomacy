@@ -35,6 +35,7 @@ public:
     int getVolume() const;
     void setBackGroundMusic(QString str);
     void stopBackGroundMusic();
+    void openGameWindow();
 
     int width, height;
 
