@@ -1,3 +1,5 @@
+#ifndef COLOR_H
+#define COLOR_H
 //color enum hex value (R,G,B,A)
 enum Color {
     Red    = 0xff0000ff,
@@ -8,3 +10,5 @@ enum Color {
     Black  = 0x000000ff,
     White  = 0xffffffff
 };
+
+#endif

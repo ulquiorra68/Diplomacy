@@ -2,7 +2,6 @@
 #define OFFER_H
 
 #include "code/include/player.h"
-#include "code/include/Territory.h"
 
 class Offer
 {
@@ -25,7 +24,7 @@ public:
     void setAcceped(bool flag);
     bool getAccepted();
 
-    Player* makeAnOffer(Player* p, Territory* t, int gold);
+   // Player* makeAnOffer(Player* p, Territory* t, int gold);
 };
 
 #endif // OFFER_H

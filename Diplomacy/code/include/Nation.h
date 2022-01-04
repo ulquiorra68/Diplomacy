@@ -1,3 +1,5 @@
+#ifndef NATION_H
+#define NATION_H
 //ingame nationality enum
 enum Nation {
     Russia  = 0x0000001,
@@ -9,3 +11,4 @@ enum Nation {
     Italy   = 0x0000007,
     Neutral = 0x0000008
 };
+#endif

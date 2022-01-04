@@ -4,7 +4,7 @@
 #include<vector>
 #include<unordered_set>
 
-#include "code/include/Territory.h"
+//#include "code/include/Territory.h"
 #include "code/include/player.h"
 #include "code/include/offer.h"
 
@@ -23,10 +23,10 @@ public:
     void start();
     void end(Player* p);
 
-    bool playMove(Player* p);
+    void playMove(Player* p);
     void attack(Territory* att, Territory* def);
     void help(Player* helper, Player* seeker, Offer* offer);
-    void moveTanks(int num, Territory* fstTerritory, Territory* sndTerritory);
+    void moveTanks(Territory* fstTerritory, Territory* sndTerritory);
 
     const vector<Player*> &players() const;
     const unordered_set<Territory*> &territories() const;

@@ -6,6 +6,7 @@
 #include<unordered_set>
 
 #include "code/include/Color.h"
+#include "code/include/Nation.h"
 #include "code/include/Territory.h"
 
 class Player

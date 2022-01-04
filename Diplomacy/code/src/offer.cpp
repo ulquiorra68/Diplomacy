@@ -28,7 +28,7 @@ Offer::Offer(Player* offering, Territory* territory, int gold) : p_offering(offe
     p_players = vector<Player *>();
 }
 
-Player* Offer::makeAnOffer(Player *p, Territory *t, int gold)
+/*Player* Offer::makeAnOffer(Player* p, Territory* t, int gold)
 {
     if (p_players.size() == 0)
     {
@@ -57,4 +57,4 @@ Player* Offer::makeAnOffer(Player *p, Territory *t, int gold)
         p_accepted = true;
         return helper;
     }
-}
+}*/

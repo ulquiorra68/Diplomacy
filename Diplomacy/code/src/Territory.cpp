@@ -1,10 +1,10 @@
-#include "Territory.h"
+#include "code/include/Territory.h"
 
 using namespace std;
 
 Territory::Territory(string name, Nation nation, double x, double y, bool isCapital)
 {
-	m_TerritoryrName = name;
+	m_TerritoryName = name;
 	m_TerritoryNationalBelonging = nation;
 	m_PositionX = x;
 	m_PositionY = y;
@@ -51,7 +51,7 @@ void Territory::AddBorders(vector<Territory*> territorries) {
 
 void Territory::DrawCircle() {
 	
-	Color territory_color = m_TerritoryPlayerBelonging->getColor();
+	//Color territory_color = m_TerritoryPlayerBelonging->getColor();
 
 	//draw circle in color territory_color
 }
