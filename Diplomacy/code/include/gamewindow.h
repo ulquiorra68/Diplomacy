@@ -14,7 +14,7 @@ class GameWindow : public QMainWindow
 
 public:
     GameWindow(MainWindow *parent = nullptr);
-    ~GameWindow();
+    ~GameWindow() {};
 
     MainWindow *mw;
 

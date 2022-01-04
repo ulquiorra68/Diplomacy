@@ -9,6 +9,8 @@
 #include "code/include/Nation.h"
 #include "code/include/Territory.h"
 
+class Territory;
+
 class Player
 {
 private:
@@ -23,10 +25,10 @@ private:
     bool p_wantsToOffer;
     bool p_wantsToHelp;
 
-    std::unordered_set<Territory*> p_territories;
+    std::unordered_set <Territory*> p_territories;
 
 public:
-    Player();
+    Player() {};
     Player(const std::string &name, Color color, bool ownerInd);
     ~Player();
 
@@ -64,7 +66,7 @@ public:
     const std::unordered_set<Territory *> &territories() const;
     void setTerritories(const std::unordered_set<Territory *> &newTerritories);
 
-    void sumAllTanks(unordered_set<Territory *>);
+    void sumAllTanks(std::unordered_set<Territory*>);
 };
 
 #endif // PLAYER_H
