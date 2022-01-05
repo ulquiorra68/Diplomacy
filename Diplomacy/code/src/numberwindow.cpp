@@ -8,7 +8,6 @@ void NumberWindow::onOk()
 
     UsersWindow* uw = new UsersWindow(this);
     uw->setWindowFlags(Qt::CustomizeWindowHint);
-    uw->setAttribute(Qt::WA_TranslucentBackground);
     uw->exec();
 }
 
@@ -27,6 +26,8 @@ NumberWindow::NumberWindow(MainWindow *parent) :
 
     connect(ui->back_button, &QPushButton::clicked, this, &NumberWindow::onBack);
     connect(ui->ok_button, &QPushButton::clicked, this, &NumberWindow::onOk);
+
+    p_ready = false;
 }
 
 NumberWindow::~NumberWindow()
