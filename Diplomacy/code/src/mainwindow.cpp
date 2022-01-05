@@ -3,6 +3,7 @@
 #include "code/include/userswindow.h"
 #include "code/include/numberwindow.h"
 #include "code/include/gamewindow.h"
+#include "code/include/optionswindow.h"
 
 void MainWindow::resizeEvent(QResizeEvent *event) {
     QPixmap bkgnd(":/images/diplomacy.jpg");
@@ -23,7 +24,6 @@ void MainWindow::onPlay()
 {
     NumberWindow* nw = new NumberWindow(this);
     nw->setWindowFlags(Qt::CustomizeWindowHint);
-    nw->setAttribute(Qt::WA_TranslucentBackground);
     nw->exec();
 
     if (nw->ready())
@@ -33,10 +33,18 @@ void MainWindow::onPlay()
     }
 }
 
+void MainWindow::onOptions()
+{
+    OptionsWindow *ow = new OptionsWindow(this);
+    ow->setWindowFlags(Qt::CustomizeWindowHint);
+    ow->exec();
+}
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , volume(10)
+    , sound(true)
 {
     ui->setupUi(this);
     setMusic();
@@ -59,6 +67,16 @@ void MainWindow::openGameWindow()
 
     gw->setWindowFlags(Qt::Window);
     gw->showFullScreen();
+}
+
+bool MainWindow::isSoundOn() const
+{
+    return sound;
+}
+
+void MainWindow::setSoundOn(bool flag)
+{
+    sound = flag;
 }
 
 int MainWindow::getHeight() const
@@ -111,7 +129,7 @@ void MainWindow::setConnects()
 {
     connect(ui->quit_button, &QPushButton::clicked, this, &MainWindow::onQuit);
     connect(ui->play_button, &QPushButton::clicked, this, &MainWindow::onPlay);
-  //connect(ui->options_button, &QPushButton::clicked, this, &MainWindow::onOptions);
+    connect(ui->options_button, &QPushButton::clicked, this, &MainWindow::onOptions);
 }
 
 void MainWindow::setMusic()

@@ -24,7 +24,7 @@ protected:
 public slots:
     void onQuit();
     void onPlay();
-   // void onOptions();
+    void onOptions();
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -36,6 +36,8 @@ public:
     void setBackGroundMusic(QString str);
     void stopBackGroundMusic();
     void openGameWindow();
+    bool isSoundOn() const;
+    void setSoundOn(bool flag);
 
     int width, height;
 
@@ -56,5 +58,6 @@ public:
 private:
     Ui::MainWindow *ui;
     int volume;
+    bool sound;
 };
 #endif // MAINWINDOW_H
