@@ -10,8 +10,14 @@
     <height>397</height>
    </rect>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::ClickFocus</enum>
+  </property>
   <property name="windowTitle">
    <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #c4b69f</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -25,6 +31,11 @@
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="10" column="4">
        <widget class="QPushButton" name="ok_button">
+        <property name="font">
+         <font>
+          <family>MV Boli</family>
+         </font>
+        </property>
         <property name="text">
          <string>OK</string>
         </property>
@@ -32,6 +43,11 @@
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="label_2">
+        <property name="font">
+         <font>
+          <family>MV Boli</family>
+         </font>
+        </property>
         <property name="text">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Player2&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
@@ -39,6 +55,11 @@
       </item>
       <item row="6" column="0">
        <widget class="QLabel" name="label_5">
+        <property name="font">
+         <font>
+          <family>MV Boli</family>
+         </font>
+        </property>
         <property name="text">
          <string>Player5</string>
         </property>
@@ -46,6 +67,11 @@
       </item>
       <item row="10" column="0">
        <widget class="QPushButton" name="cancel_button">
+        <property name="font">
+         <font>
+          <family>MV Boli</family>
+         </font>
+        </property>
         <property name="text">
          <string>Cancel</string>
         </property>
@@ -53,6 +79,11 @@
       </item>
       <item row="5" column="0">
        <widget class="QLabel" name="label_4">
+        <property name="font">
+         <font>
+          <family>MV Boli</family>
+         </font>
+        </property>
         <property name="text">
          <string>Player4</string>
         </property>
@@ -60,6 +91,11 @@
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <family>MV Boli</family>
+         </font>
+        </property>
         <property name="text">
          <string>Player1</string>
         </property>
@@ -83,6 +119,11 @@
       </item>
       <item row="4" column="0">
        <widget class="QLabel" name="label_3">
+        <property name="font">
+         <font>
+          <family>MV Boli</family>
+         </font>
+        </property>
         <property name="text">
          <string>Player3</string>
         </property>
@@ -93,6 +134,11 @@
       </item>
       <item row="8" column="0">
        <widget class="QLabel" name="label_7">
+        <property name="font">
+         <font>
+          <family>MV Boli</family>
+         </font>
+        </property>
         <property name="text">
          <string>Player7</string>
         </property>
@@ -100,6 +146,11 @@
       </item>
       <item row="7" column="0">
        <widget class="QLabel" name="label_6">
+        <property name="font">
+         <font>
+          <family>MV Boli</family>
+         </font>
+        </property>
         <property name="text">
          <string>Player6</string>
         </property>
