@@ -16,20 +16,22 @@ private:
     Player* p_currPlayer;
 
 public:
-    Game();
+    Game() {};
     Game(const vector<Player*> &players, const vector<Territory*> &territories);
     ~Game();
 
-    void start();
+    void start(vector<QPushButton*> buttons);
     void end(Player* p);
 
     void playMove(Player* p);
     void attack(Territory* att, Territory* def);
     void help(Player* helper, Player* seeker, Offer* offer);
     void moveTanks(Territory* fstTerritory, Territory* sndTerritory);
+    void initTerritories();
+    void initBordersAndCapitals();
 
     const vector<Player*> &players() const;
-    const unordered_set<Territory*> &territories() const;
+   // unordered_set<Territory*> territories;
 
     Player* currPlayer() const;
     void setCurrPlayer(Player* newCurrPlayer);

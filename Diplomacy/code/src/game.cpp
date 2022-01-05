@@ -1,8 +1,19 @@
 #include "code/include/game.h"
+#include <fstream>
+#include <iostream>
+using namespace std;
 
-void Game::start()
+void Game::start(vector<QPushButton*> buttons)
 {
-
+    initTerritories();
+    initBordersAndCapitals();
+    for (Territory* terr : p_territories)
+    {
+        QPushButton* pb = buttons.back();
+        terr->SetButton(pb);
+        buttons.pop_back();
+    }
+    
 }
 
 void Game::end(Player *p)
@@ -19,11 +30,11 @@ const vector<Player*> &Game::players() const
 {
     return p_players;
 }
-
-const unordered_set<Territory*> &Game::territories() const
+/*
+unordered_set<Territory*> Game::territories()
 {
     return p_territories;
-}
+}*/
 
 Player* Game::currPlayer() const
 {
@@ -86,4 +97,81 @@ void Game::moveTanks(Territory* from, Territory* to)
 {
     from->decreaseNumOfTanks();
     to->increaseNumOfTanks();
+}
+
+void Game::initTerritories()
+{
+    fstream territoriesFile;
+    territoriesFile.open("territories_position.txt", ios::in);
+    
+    if (!territoriesFile) {
+        cout << "No such file";
+    }
+    else {
+        string name;
+        int x, y;
+        for (int i = 0; i < 57; i++)
+        {
+            territoriesFile >> name;
+            territoriesFile >> x;
+            territoriesFile >> y;
+
+            Territory* terr;
+            terr = new Territory(name, x, y);
+            p_territories.insert(terr);
+        }
+    }
+    
+    territoriesFile.close();
+}
+
+void Game::initBordersAndCapitals()
+{
+    fstream territoriesFile;
+    territoriesFile.open("territories_list.txt", ios::in);
+
+    if (!territoriesFile) {
+        cout << "No such file";
+    }
+    else {
+        string name, nationStr, isCapitalStr, border;
+        Nation nation;
+        int numOfBorders;
+        for (int i = 0; i < 57; i++)
+        {
+            territoriesFile >> name;
+            territoriesFile >> nationStr;
+            territoriesFile >> isCapitalStr;
+            territoriesFile >> numOfBorders;
+            bool isCapit = isCapitalStr == "true" ? true : false;
+
+            vector<Territory*> borders;
+            for(int j = 0; j < numOfBorders; j++)
+            {
+                string borderName;
+                territoriesFile >> borderName;
+                
+                for (Territory* terr : p_territories)
+                {
+                    if (terr->GetName() == borderName)
+                    {
+                        borders.push_back(terr);
+                        break;
+                    }
+                }
+            }
+
+            for (Territory* terr : p_territories)
+            {
+                if (terr->GetName() == name)
+                {
+                    terr->SetNationalBelonging(nationStr);
+                    terr->SetCapital(isCapit);
+                    terr->SetBorders(borders);
+                }
+            }
+        }
+    }
+
+    territoriesFile.close();
 }
