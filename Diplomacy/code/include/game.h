@@ -29,11 +29,13 @@ public:
     void moveTanks(Territory* fstTerritory, Territory* sndTerritory);
     void initTerritories();
     void initBordersAndCapitals();
+    void setInitialTanks();
+    bool playerSetTanks(Player* player);
 
-    const vector<Player*> &players() const;
+    vector<Player*> players();
    // unordered_set<Territory*> territories;
 
-    Player* currPlayer() const;
+    Player* currPlayer();
     void setCurrPlayer(Player* newCurrPlayer);
 };
 

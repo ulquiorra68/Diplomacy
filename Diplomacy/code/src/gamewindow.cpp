@@ -12,7 +12,7 @@ GameWindow::GameWindow(MainWindow *parent) :
     ui->setupUi(this);
 
     QPixmap bkgnd(":/images/map.jpg");
-    bkgnd = bkgnd.scaled(QSize(1920, 1080), Qt::IgnoreAspectRatio);
+    bkgnd = bkgnd.scaled(QSize(1407, 1080), Qt::KeepAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Window, bkgnd);
     this->setPalette(palette);
@@ -20,11 +20,9 @@ GameWindow::GameWindow(MainWindow *parent) :
     vector<QPushButton*> territoryButtons;
     for (int i = 0; i < 57; i++)
     {
-        QPushButton* pb = new QPushButton();
-        pb->show();
-        pb->setVisible(true);
+        QPushButton* pb = new QPushButton("1", this);
         pb->setObjectName("ime");
-        pb->setFixedSize(100, 100);
+        pb->setFixedSize(10, 10);
         territoryButtons.push_back(pb);
     }
 

@@ -1,6 +1,8 @@
 #include "code/include/game.h"
 #include <fstream>
 #include <iostream>
+
+
 using namespace std;
 
 void Game::start(vector<QPushButton*> buttons)
@@ -13,6 +15,21 @@ void Game::start(vector<QPushButton*> buttons)
         terr->SetButton(pb);
         buttons.pop_back();
     }
+
+   // setTestPlayers();
+    for (int i = 1; i <= 5; i++)
+    {
+        string pname = "Player_" + to_string(i);
+        Player *p = new Player(pname, Yellow, true);
+        p_players.push_back(p);
+    }
+
+
+
+    if (!p_players.empty())
+        setCurrPlayer(p_players[0]);
+
+    setInitialTanks();
     
 }
 
@@ -26,7 +43,25 @@ void Game::playMove(Player *p)
 
 }
 
-const vector<Player*> &Game::players() const
+void Game::setInitialTanks() {
+    
+    if (!playerSetTanks(currPlayer()))
+    {
+        string out;
+        out = "Set init tanks player: " + currPlayer()->name() + "/n";    
+        out += ".";
+    } 
+}   
+
+bool Game::playerSetTanks(Player* player)
+{
+    if (player->getNumOfInitTanksLeft() == 0)
+        return true;
+    
+    return false;
+}
+
+vector<Player*> Game::players()
 {
     return p_players;
 }
@@ -36,7 +71,7 @@ unordered_set<Territory*> Game::territories()
     return p_territories;
 }*/
 
-Player* Game::currPlayer() const
+Player* Game::currPlayer()
 {
     return p_currPlayer;
 }

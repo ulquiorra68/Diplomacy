@@ -20,6 +20,7 @@ private:
 
     int p_gold;
     int numOfAllTanks;
+    int numOfInitTanks;
 
     bool p_wantsToAttack;
     bool p_wantsToOffer;
@@ -39,6 +40,7 @@ public:
 
     void setName(const std::string &newName);
 
+    int getNumOfInitTanksLeft() { return numOfInitTanks; };
     Color color() const;
     void setColor(Color newColor);
 
@@ -63,7 +65,7 @@ public:
     bool wantsToHelp();
     void setWantsToHelp(bool flag);
 
-    const std::unordered_set<Territory *> &territories() const;
+    std::unordered_set<Territory *> &territories();
     void setTerritories(const std::unordered_set<Territory *> &newTerritories);
 
     void sumAllTanks(std::unordered_set<Territory*>);

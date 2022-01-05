@@ -16,8 +16,8 @@ class Territory {
 
 public:
 	Territory() {};
-	Territory(string name, string nation, double x = 1, double y = 1, bool isCapital = false);
-	Territory(string name, double x, double y/*, QPushButton* pushButton*/);
+	Territory(string name, string nation, int x = 1, int y = 1, bool isCapital = false);
+	Territory(string name, int x, int y/*, QPushButton* pushButton*/);
 	~Territory();
 
 	//getters & setters
@@ -30,7 +30,8 @@ public:
 	void SetCapital(bool isCap) { m_CapitalFlag = isCap; }
 	void SetBorders(vector<Territory*> terr) { m_Borders = terr; }
 	void SetButton(QPushButton* pushButton);
-
+	int getXpos() { return m_PositionX; };
+	int getYpos() { return m_PositionY; };
 
 
 	int numOfTanks() { return numOfTanksOn; }
@@ -50,8 +51,8 @@ private:
 	string m_TerritoryName;
 	Nation m_TerritoryNationalBelonging;
 	bool m_CapitalFlag = false;
-	double m_PositionX = 0;
-	double m_PositionY = 0;
+	int m_PositionX = 0;
+	int m_PositionY = 0;
 	vector<Territory*> m_Borders;
 	int numOfTanksOn = 0;
 	QPushButton* m_pushButton;

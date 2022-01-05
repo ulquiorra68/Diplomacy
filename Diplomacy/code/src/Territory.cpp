@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Territory::Territory(string name, string nation, double x, double y, bool isCapital)
+Territory::Territory(string name, string nation, int x, int y, bool isCapital)
 {
 	m_TerritoryName = name;
 	m_TerritoryNationalBelonging = GetNationFromText(nation);
@@ -24,7 +24,7 @@ Territory::Territory(string name, string nation, double x, double y, bool isCapi
 */
 }
 
-Territory::Territory(string name, double x, double y/*, QPushButton* pushButton*/) {
+Territory::Territory(string name, int x, int y/*, QPushButton* pushButton*/) {
 	m_TerritoryName = name;
 	m_PositionX = x;
 	m_PositionY = y;
@@ -45,7 +45,12 @@ Territory::Territory(string name, double x, double y/*, QPushButton* pushButton*
 
 void Territory::SetButton(QPushButton* pushButton) {
 	m_pushButton = pushButton;
-	m_pushButton->setText("text");
+	m_pushButton->setText(QString::fromStdString(GetName()));
+	int xpos = getXpos() - 10;
+	int ypos = getYpos() - 10;
+	xpos = xpos * 1.18534;
+	ypos = ypos * 1.18534;
+	m_pushButton->setGeometry(xpos, ypos, 10, 10);
 	m_pushButton->setStyleSheet("background-color: rgba(180, 180, 180, 1);\
                                 color: brown;\
                                 border-style: solid;\

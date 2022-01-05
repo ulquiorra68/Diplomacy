@@ -97,7 +97,7 @@ void Player::setWantsToHelp(bool flag)
     p_wantsToHelp = flag;
 }
 
-const std::unordered_set<Territory *> &Player::territories() const
+std::unordered_set<Territory *> &Player::territories()
 {
     return p_territories;
 }
@@ -112,6 +112,7 @@ Player::Player(const string &name, Color color, bool ownerInd) : p_name(name),
     p_ownerInd(ownerInd)
 {
     p_gold = 30;
+    numOfInitTanks = 3;
     p_wantsToAttack = p_wantsToHelp = p_wantsToOffer = false;
     p_territories = unordered_set<Territory *>();
 }
