@@ -17,6 +17,7 @@ private:
     std::string p_name;
     Color p_color;
     bool p_ownerInd;
+    Nation p_playerNationality;
 
     int p_gold;
     int numOfAllTanks;
@@ -30,7 +31,7 @@ private:
 
 public:
     Player() {};
-    Player(const std::string &name, Color color, bool ownerInd);
+    Player(const std::string &name, Color color, bool ownerInd, Nation nation);
     ~Player();
 
     const std::string &name() const;
@@ -39,6 +40,9 @@ public:
     void removeTerritory(Territory* t);
 
     void setName(const std::string &newName);
+
+    void setNation(Nation nation) { p_playerNationality = nation; };
+    Nation getNation() { return p_playerNationality; };
 
     int getNumOfInitTanksLeft() { return numOfInitTanks; };
     Color color() const;
@@ -69,6 +73,8 @@ public:
     void setTerritories(const std::unordered_set<Territory *> &newTerritories);
 
     void sumAllTanks(std::unordered_set<Territory*>);
+    
+    void initTerritoriesByNation(std::unordered_set<Territory*> territories);
 };
 
 #endif // PLAYER_H

@@ -20,7 +20,8 @@ void Game::start(vector<QPushButton*> buttons)
     for (int i = 1; i <= 5; i++)
     {
         string pname = "Player_" + to_string(i);
-        Player *p = new Player(pname, Yellow, true);
+        Player *p = new Player(pname, Yellow, true, Russia);
+        p->initTerritoriesByNation(p_territories);
         p_players.push_back(p);
     }
 

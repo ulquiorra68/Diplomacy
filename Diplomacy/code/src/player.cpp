@@ -107,12 +107,23 @@ void Player::setTerritories(const std::unordered_set<Territory *> &newTerritorie
     p_territories = newTerritories;
 }
 
-Player::Player(const string &name, Color color, bool ownerInd) : p_name(name),
+Player::Player(const string &name, Color color, bool ownerInd, Nation nation) : p_name(name),
     p_color(color),
-    p_ownerInd(ownerInd)
+    p_ownerInd(ownerInd),
+    p_playerNationality(nation)
 {
     p_gold = 30;
     numOfInitTanks = 3;
     p_wantsToAttack = p_wantsToHelp = p_wantsToOffer = false;
     p_territories = unordered_set<Territory *>();
 }
+
+void Player::initTerritoriesByNation(unordered_set<Territory*> territories) {
+
+    for (Territory* terr : territories)
+    {
+        if (terr->GetNationalBelonging() == p_playerNationality)
+            addTerritory(terr);
+    }
+}
+

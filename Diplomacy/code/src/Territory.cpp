@@ -63,6 +63,52 @@ void Territory::SetButton(QPushButton* pushButton) {
 
 }
 
+void Territory::setButtonColor(Color color)
+{
+	string rgbaColor = GetStringColor(color);
+	QString qstr = QString::fromStdString(rgbaColor);
+
+	m_pushButton->setStyleSheet("background-color: " + qstr + ";\
+                                color: brown;\
+                                border-style: solid;\
+                                border-width:1px;\
+                                border-radius:12px;\
+                                max-width:25px;\
+                                max-height:25px;\
+                                min-width:25px;\
+                                min-height:25px; ");
+
+}
+
+string Territory::GetStringColor(Color color)
+{
+	string colorStr;
+	if (color == Red)
+		colorStr = "rgba(255, 0, 0, 1)";
+	else
+		if (color == Blue)
+			colorStr = "rgba(0, 0, 255, 1)";
+		else
+			if (color == Green)
+				colorStr = "rgba(0, 255, 0, 1)";
+			else
+				if (color == Yellow)
+					colorStr = "rgba(255, 255, 0, 1)";
+				else
+					if (color == Cyan)
+						colorStr = "rgba(0, 255, 255, 1)";
+					else
+						if (color == White)
+							colorStr = "rgba(255, 255, 255, 1)";
+						else
+							if (color == Black)
+								colorStr = "rgba(0, 0, 0, 1)";
+							else
+								colorStr = "rgba(180, 180, 180,1)";
+
+	return colorStr;
+}
+
 
 string Territory::GetNationalBelongingText()
 {

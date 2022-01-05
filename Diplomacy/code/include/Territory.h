@@ -32,7 +32,8 @@ public:
 	void SetButton(QPushButton* pushButton);
 	int getXpos() { return m_PositionX; };
 	int getYpos() { return m_PositionY; };
-
+	void setButtonColor(Color color);
+	string GetStringColor(Color color);
 
 	int numOfTanks() { return numOfTanksOn; }
 	void decreaseNumOfTanks() { numOfTanksOn--; }
