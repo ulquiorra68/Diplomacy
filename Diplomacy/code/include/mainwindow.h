@@ -38,6 +38,8 @@ public:
     void openGameWindow();
     bool isSoundOn() const;
     void setSoundOn(bool flag);
+    int getNumSpinBox();
+    void setNumSpinBox(int value);
 
     int width, height;
 
@@ -59,5 +61,6 @@ private:
     Ui::MainWindow *ui;
     int volume;
     bool sound;
+    int numSpinBox;
 };
 #endif // MAINWINDOW_H

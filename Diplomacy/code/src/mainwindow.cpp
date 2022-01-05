@@ -1,7 +1,6 @@
 #include "code/include/mainwindow.h"
 #include "ui_mainwindow.h"
 #include "code/include/userswindow.h"
-#include "code/include/numberwindow.h"
 #include "code/include/gamewindow.h"
 #include "code/include/optionswindow.h"
 
@@ -22,14 +21,14 @@ void MainWindow::onQuit()
 
 void MainWindow::onPlay()
 {
-    NumberWindow* nw = new NumberWindow(this);
-    nw->setWindowFlags(Qt::CustomizeWindowHint);
-    nw->exec();
+    UsersWindow* uw = new UsersWindow(this);
+    uw->setWindowFlags(Qt::CustomizeWindowHint);
+    uw->exec();
 
-    if (nw->ready())
+    if (uw->ready())
     {
         openGameWindow();
-        nw->setReady(false);
+        uw->setReady(false);
     }
 }
 
@@ -45,8 +44,10 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
     , volume(10)
     , sound(true)
+    , numSpinBox(3)
 {
     ui->setupUi(this);
+
     setMusic();
     setConnects();
 
@@ -67,6 +68,16 @@ void MainWindow::openGameWindow()
 
     gw->setWindowFlags(Qt::Window);
     gw->showFullScreen();
+}
+
+int MainWindow::getNumSpinBox()
+{
+    return numSpinBox;
+}
+
+void MainWindow::setNumSpinBox(int value)
+{
+    numSpinBox = value;
 }
 
 bool MainWindow::isSoundOn() const
