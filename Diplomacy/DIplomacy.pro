@@ -15,7 +15,6 @@ SOURCES += \
     code/src/gamewindow.cpp \
     code/src/main.cpp \
     code/src/mainwindow.cpp \
-    code/src/numberwindow.cpp \
     code/src/offer.cpp \
     code/src/optionswindow.cpp \
     code/src/player.cpp \
@@ -29,7 +28,6 @@ HEADERS += \
     code/include/game.h \
     code/include/gamewindow.h \
     code/include/mainwindow.h \
-    code/include/numberwindow.h \
     code/include/offer.h \
     code/include/optionswindow.h \
     code/include/player.h \
@@ -39,7 +37,6 @@ HEADERS += \
 FORMS += \
     forms/gamewindow.ui \
     forms/mainwindow.ui \
-    forms/numberwindow.ui \
     forms/optionswindow.ui \
     forms/userswindow.ui \
     forms/userswindow.ui

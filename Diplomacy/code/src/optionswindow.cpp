@@ -3,11 +3,6 @@
 #include "code/include/mainwindow.h"
 #include <QSlider>
 
-void OptionsWindow::volumeChanged()
-{
-    mw->setVolume(ui->volumeSlider->value());
-}
-
 OptionsWindow::OptionsWindow(MainWindow *parent) :
     QDialog(parent),
     ui(new Ui::OptionsWindow),
@@ -17,10 +12,8 @@ OptionsWindow::OptionsWindow(MainWindow *parent) :
 
     ui->onButton->setChecked(parent->isSoundOn());
     ui->offButton->setChecked(!parent->isSoundOn());
-    ui->volumeSlider->setValue(mw->getVolume());
 
     connect(ui->backButton, &QPushButton::clicked, this, &OptionsWindow::onBack);
-    connect(ui->volumeSlider, &QSlider::valueChanged, mw, &MainWindow::setVolume);
 }
 
 OptionsWindow::~OptionsWindow()
@@ -37,6 +30,8 @@ void OptionsWindow::onBack()
         mw->setSoundOn(false);
         mw->setVolume(0);
     }
+
+    mw->setNumSpinBox((ui->numberSpinBox)->value());
 
     delete this;
 }
