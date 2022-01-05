@@ -2,7 +2,7 @@
 #include "ui_gamewindow.h"
 #include "code/include/game.h"
 
-class Game;
+//class Game;
 
 GameWindow::GameWindow(MainWindow *parent) :
     QMainWindow(parent),
@@ -17,7 +17,7 @@ GameWindow::GameWindow(MainWindow *parent) :
     palette.setBrush(QPalette::Window, bkgnd);
     this->setPalette(palette);
 
-    vector<QPushButton*> territoryButtons;
+    std::vector<QPushButton*> territoryButtons;
     for (int i = 0; i < 57; i++)
     {
         QPushButton* pb = new QPushButton("1", this);

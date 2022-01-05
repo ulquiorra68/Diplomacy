@@ -24,8 +24,8 @@ public:
     const QVector<Player*> &players() const;
     void setPlayers(const QVector<Player *> &newPlayers);
 
-    bool ready() const;
-    void setReady(bool flag);
+    bool ready() { return p_ready; };
+    void setReady(bool flag) { p_ready = flag; };
 
     int getNumSpinBox();
 

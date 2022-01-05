@@ -9,31 +9,31 @@
 #include<vector>
 #include <QPushButton>
 
-using namespace std;
+//using namespace std;
 class Player;
 
 class Territory {
 
 public:
 	Territory() {};
-	Territory(string name, string nation, int x = 1, int y = 1, bool isCapital = false);
-	Territory(string name, int x, int y/*, QPushButton* pushButton*/);
+	Territory(std::string name, std::string nation, int x = 1, int y = 1, bool isCapital = false);
+	Territory(std::string name, int x, int y/*, QPushButton* pushButton*/);
 	~Territory();
 
 	//getters & setters
-	string GetName() { return m_TerritoryName; }
+	std::string GetName() { return m_TerritoryName; }
 	Player* GetPlayerBelonging() { return m_TerritoryPlayerBelonging; }
 	void SetPlayerBelonging(Player* player) { m_TerritoryPlayerBelonging = player; }
 	Nation GetNationalBelonging() { return m_TerritoryNationalBelonging; }
-	void SetNationalBelonging(string nation) { m_TerritoryNationalBelonging = GetNationFromText(nation); }
+	void SetNationalBelonging(std::string nation) { m_TerritoryNationalBelonging = GetNationFromText(nation); }
 	bool IsCapital() { return m_CapitalFlag; }
 	void SetCapital(bool isCap) { m_CapitalFlag = isCap; }
-	void SetBorders(vector<Territory*> terr) { m_Borders = terr; }
+	void SetBorders(std::vector<Territory*> terr) { m_Borders = terr; }
 	void SetButton(QPushButton* pushButton);
 	int getXpos() { return m_PositionX; };
 	int getYpos() { return m_PositionY; };
 	void setButtonColor(Color color);
-	string GetStringColor(Color color);
+	std::string GetStringColor(Color color);
 
 	int numOfTanks() { return numOfTanksOn; }
 	void decreaseNumOfTanks() { numOfTanksOn--; }
@@ -42,19 +42,19 @@ public:
 
 
 	void DrawCircle();
-	void AddBorders(vector<Territory*> territorries);
-	string GetNationalBelongingText();
-	Nation GetNationFromText(string nation);
+	void AddBorders(std::vector<Territory*> territorries);
+	std::string GetNationalBelongingText();
+	Nation GetNationFromText(std::string nation);
 	//void PrintTerritoryInfos();  // NOTE: test method
 
 private:
 	//non changeable initial territory attributes
-	string m_TerritoryName;
+	std::string m_TerritoryName;
 	Nation m_TerritoryNationalBelonging;
 	bool m_CapitalFlag = false;
 	int m_PositionX = 0;
 	int m_PositionY = 0;
-	vector<Territory*> m_Borders;
+	std::vector<Territory*> m_Borders;
 	int numOfTanksOn = 0;
 	QPushButton* m_pushButton;
 

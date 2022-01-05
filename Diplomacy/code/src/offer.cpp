@@ -25,7 +25,7 @@ Offer::Offer(Player* offering, Territory* territory, int gold) : p_offering(offe
     p_cost(gold)
 {
     p_accepted = false;
-    p_players = vector<Player *>();
+    p_players = std::vector<Player *>();
 }
 
 /*Player* Offer::makeAnOffer(Player* p, Territory* t, int gold)

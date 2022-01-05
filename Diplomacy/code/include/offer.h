@@ -8,7 +8,7 @@ class Offer
 private:
     Player* p_offering;
 
-    vector<Player*> p_players;
+    std::vector<Player*> p_players;
 
     Territory* p_territory;
 

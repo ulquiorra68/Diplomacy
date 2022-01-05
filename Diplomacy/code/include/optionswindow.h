@@ -14,7 +14,7 @@ class OptionsWindow : public QDialog
     Q_OBJECT
 
 public slots:
-    void volumeChanged();
+    void volumeChanged() {};
 
 public:
     explicit OptionsWindow(MainWindow *parent = nullptr);

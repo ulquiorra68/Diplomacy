@@ -11,16 +11,16 @@
 class Game
 {
 private:
-    vector<Player*> p_players;
-    unordered_set<Territory*> p_territories;
+    std::vector<Player*> p_players;
+    std::unordered_set<Territory*> p_territories;
     Player* p_currPlayer;
 
 public:
     Game() {};
-    Game(const vector<Player*> &players, const vector<Territory*> &territories);
+    Game(const std::vector<Player*> &players, const std::vector<Territory*> &territories);
     ~Game();
 
-    void start(vector<QPushButton*> buttons);
+    void start(std::vector<QPushButton*> buttons);
     void end(Player* p);
 
     void playMove(Player* p);
@@ -32,7 +32,7 @@ public:
     void setInitialTanks();
     bool playerSetTanks(Player* player);
 
-    vector<Player*> players();
+    std::vector<Player*> players();
    // unordered_set<Territory*> territories;
 
     Player* currPlayer();
