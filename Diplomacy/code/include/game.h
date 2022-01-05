@@ -14,6 +14,7 @@ private:
     std::vector<Player*> p_players;
     std::unordered_set<Territory*> p_territories;
     Player* p_currPlayer;
+    int p_counter;
 
 public:
     Game() {};
@@ -31,6 +32,8 @@ public:
     void initBordersAndCapitals();
     void setInitialTanks();
     bool playerSetTanks(Player* player);
+    int getCounter();
+    void setCounter(int value);
 
     std::vector<Player*> players();
    // unordered_set<Territory*> territories;

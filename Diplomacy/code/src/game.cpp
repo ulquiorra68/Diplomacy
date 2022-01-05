@@ -25,7 +25,7 @@ void Game::start(vector<QPushButton*> buttons)
         p_players.push_back(p);
     }
 
-
+    p_counter = 0;
 
     if (!p_players.empty())
         setCurrPlayer(p_players[0]);
@@ -210,4 +210,14 @@ void Game::initBordersAndCapitals()
     }
 
     territoriesFile.close();
+}
+
+int Game::getCounter()
+{
+    return p_counter;
+}
+
+void Game::setCounter(int value)
+{
+    p_counter = value;
 }
