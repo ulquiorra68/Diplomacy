@@ -2,8 +2,8 @@
 #define USERSWINDOW_H
 
 #include <QDialog>
-#include "code/include/numberwindow.h"
 #include "code/include/player.h"
+#include "code/include/mainwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class UsersWindow; }
@@ -18,16 +18,25 @@ public slots:
     void onCancel();
 
 public:
-    UsersWindow(NumberWindow *parent = nullptr);
+    UsersWindow(MainWindow *parent = nullptr);
     ~UsersWindow();
 
     const QVector<Player*> &players() const;
     void setPlayers(const QVector<Player *> &newPlayers);
 
+    bool ready() const;
+    void setReady(bool flag);
+
+    int getNumSpinBox();
+
 private:
     Ui::UsersWindow *ui;
-    NumberWindow* nw;
+    MainWindow* mw;
 
     QVector<Player*> p_players;
+
+    bool p_ready;
+
+    int numSpinBox;
 };
 #endif // USERSWINDOW_H

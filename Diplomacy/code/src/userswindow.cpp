@@ -103,7 +103,7 @@ void UsersWindow::onOk()
     }
     setPlayers(players);
 
-    nw->setReady(true);
+    p_ready = true;
     delete this;
 }
 
@@ -113,12 +113,14 @@ void UsersWindow::onCancel()
     delete this;
 }
 
-UsersWindow::UsersWindow(NumberWindow *parent) :
+UsersWindow::UsersWindow(MainWindow *parent) :
     QDialog(parent),
     ui(new Ui::UsersWindow),
-    nw(parent)
+    mw(parent)
 {
     ui->setupUi(this);
+
+    p_ready = false;
 
     connect(ui->cancel_button, &QPushButton::clicked, this, &UsersWindow::onCancel);
     connect(ui->ok_button, &QPushButton::clicked, this, &UsersWindow::onOk);
