@@ -11,6 +11,12 @@ GameWindow::GameWindow(MainWindow *parent) :
 {
     ui->setupUi(this);
 
+    connect(ui->attackButton, &QPushButton::clicked, this, &GameWindow::onAttack);
+    connect(ui->helpButton, &QPushButton::clicked, this, &GameWindow::onHelp);
+    connect(ui->positionButton, &QPushButton::clicked, this, &GameWindow::onChangePosition);
+    connect(ui->finishButton, &QPushButton::clicked, this, &GameWindow::onFinish);
+    connect(ui->exitButton, &QPushButton::clicked, this, &GameWindow::onExit);
+
     QPixmap bkgnd(":/images/map.jpg");
     bkgnd = bkgnd.scaled(QSize(1407, 1080), Qt::KeepAspectRatio);
     QPalette palette;
@@ -28,6 +34,29 @@ GameWindow::GameWindow(MainWindow *parent) :
 
     Game* game = new Game();
     game->start(territoryButtons);
+}
 
+void GameWindow::onAttack()
+{
 
+}
+
+void GameWindow::onHelp()
+{
+
+}
+
+void GameWindow::onChangePosition()
+{
+
+}
+
+void GameWindow::onFinish()
+{
+
+}
+
+void GameWindow::onExit()
+{
+    close();
 }

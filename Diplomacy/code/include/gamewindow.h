@@ -12,6 +12,13 @@ class GameWindow : public QMainWindow
 {
     Q_OBJECT
 
+public slots:
+    void onAttack();
+    void onHelp();
+    void onChangePosition();
+    void onFinish();
+    void onExit();
+
 public:
     GameWindow(MainWindow *parent = nullptr);
     ~GameWindow() {};
