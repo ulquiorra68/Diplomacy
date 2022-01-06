@@ -10,6 +10,8 @@
 #include <QMediaPlayer>
 #include <QAudioOutput>
 
+#include "code/include/player.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -43,6 +45,9 @@ public:
 
     int width, height;
 
+    const QVector<Player*> &players() const;
+    void setPlayers(const QVector<Player *> &newPlayers);
+
 private:
     void setConnects();
     void setMusic();
@@ -62,5 +67,7 @@ private:
     int volume;
     bool sound;
     int numSpinBox;
+
+    QVector<Player*> p_players;
 };
 #endif // MAINWINDOW_H

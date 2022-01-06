@@ -154,3 +154,13 @@ void MainWindow::setMusic()
 
     backGroundMusic->play();
 }
+
+const QVector<Player*> &MainWindow::players() const
+{
+    return p_players;
+}
+
+void MainWindow::setPlayers(const QVector<Player *> &newPlayers)
+{
+    p_players = newPlayers;
+}
