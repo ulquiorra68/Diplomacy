@@ -5,6 +5,11 @@ const std::string &Player::name() const
     return p_name;
 }
 
+void Player::addMove(Territory* start, Territory* end, int moveType)
+{
+
+}
+
 void Player::setName(const std::string &newName)
 {
     p_name = newName;
@@ -34,6 +39,7 @@ void Player::setOwnerInd(bool newOwnerInd)
 void Player::addTerritory(Territory *t)
 {
     p_territories.insert(t);
+    t->SetPlayerBelonging(this);
 }
 
 void Player::removeTerritory(Territory *t)
@@ -92,6 +98,16 @@ bool Player::wantsToHelp()
     return p_wantsToHelp;
 }
 
+void Player::sumAllTanks()
+{
+    int tanks = 0;
+    for (Territory* terr : p_territories)
+        if (terr->IsCapital())
+            tanks++;
+
+    setNumOfAllTanks(tanks);
+}
+
 void Player::setWantsToHelp(bool flag)
 {
     p_wantsToHelp = flag;
@@ -113,7 +129,6 @@ Player::Player(const std::string &name, Color color, bool ownerInd, Nation natio
     p_playerNationality(nation)
 {
     p_gold = 30;
-    numOfInitTanks = 3;
     p_wantsToAttack = p_wantsToHelp = p_wantsToOffer = false;
     p_territories = std::unordered_set<Territory *>();
 }
@@ -123,7 +138,9 @@ void Player::initTerritoriesByNation(std::unordered_set<Territory*> territories)
     for (Territory* terr : territories)
     {
         if (terr->GetNationalBelonging() == p_playerNationality)
+        {
             addTerritory(terr);
+        }
     }
 }
 

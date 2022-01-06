@@ -45,14 +45,15 @@ Territory::Territory(string name, int x, int y/*, QPushButton* pushButton*/) {
 
 void Territory::SetButton(QPushButton* pushButton) {
 	m_pushButton = pushButton;
-	m_pushButton->setText(QString::fromStdString(GetName()));
+	m_pushButton->setText(QString::fromStdString(std::to_string(numOfTanks())));
+	m_pushButton->setObjectName(QString::fromStdString(GetName()));
 	int xpos = getXpos() - 10;
 	int ypos = getYpos() - 10;
 	xpos = xpos * 1.18534;
 	ypos = ypos * 1.18534;
 	m_pushButton->setGeometry(xpos, ypos, 10, 10);
 	m_pushButton->setStyleSheet("background-color: rgba(180, 180, 180, 1);\
-                                color: brown;\
+                                color: white;\
                                 border-style: solid;\
                                 border-width:1px;\
                                 border-radius:12px;\
@@ -67,9 +68,15 @@ void Territory::setButtonColor(Color color)
 {
 	string rgbaColor = GetStringColor(color);
 	QString qstr = QString::fromStdString(rgbaColor);
-
+	QString textColor = "white";
+	if (color == White || color == Yellow || color == Cyan)
+		textColor = "black";
+	if(color == Gray)
+		m_pushButton->setText(QString::fromStdString(" - "));
+	else
+		m_pushButton->setText(QString::fromStdString(std::to_string(numOfTanks())));
 	m_pushButton->setStyleSheet("background-color: " + qstr + ";\
-                                color: brown;\
+                                color: " + textColor + "; \
                                 border-style: solid;\
                                 border-width:1px;\
                                 border-radius:12px;\
@@ -150,7 +157,7 @@ Nation Territory::GetNationFromText(string nation)
 	if (nation == "russia")
 		return Russia;
 	else
-	if (nation == "gemrany")
+	if (nation == "germany")
 		return Germany;
 	else
 	if (nation == "france")
@@ -188,6 +195,27 @@ void Territory::DrawCircle() {
 QPushButton* Territory::pushButton() const
 {
 	return m_pushButton;
+}
+
+void Territory::reDrawButtonText()
+{
+	if(!m_TerritoryPlayerBelonging)
+		m_pushButton->setText(QString::fromStdString(" - "));
+	else
+		m_pushButton->setText(QString::fromStdString(std::to_string(numOfTanks())));
+}
+
+bool Territory::isBoarder(Territory* terr)
+{
+if (!terr->GetBorders().empty())
+	{
+		for (Territory* territory : terr->GetBorders())
+		{
+			if (territory->GetName() == GetName())
+				return true;
+		}
+	}
+	return false;
 }
 
 

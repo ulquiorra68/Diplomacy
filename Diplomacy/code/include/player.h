@@ -21,7 +21,7 @@ private:
 
     int p_gold;
     int numOfAllTanks;
-    int numOfInitTanks;
+
 
     bool p_wantsToAttack;
     bool p_wantsToOffer;
@@ -36,6 +36,8 @@ public:
 
     const std::string &name() const;
 
+    void addMove(Territory* start, Territory* end, int moveType);
+
     void addTerritory(Territory* t);
     void removeTerritory(Territory* t);
 
@@ -44,7 +46,6 @@ public:
     void setNation(Nation nation) { p_playerNationality = nation; };
     Nation getNation() { return p_playerNationality; };
 
-    int getNumOfInitTanksLeft() { return numOfInitTanks; };
     Color color() const;
     void setColor(Color newColor);
 
@@ -58,7 +59,8 @@ public:
     void increaseGold(int amount);
     void decreaseGold(int amount);
 
-    int getNumOfAllTanks();
+    int getNumOfAllTanks() { return numOfAllTanks; };
+    void setNumOfAllTanks(int num) { numOfAllTanks = num; };
 
     bool wantsToAttack();
     void setWantsToAttack(bool flag);
@@ -72,7 +74,7 @@ public:
     std::unordered_set<Territory *> &territories();
     void setTerritories(const std::unordered_set<Territory *> &newTerritories);
 
-    void sumAllTanks(std::unordered_set<Territory*>);
+    void sumAllTanks();
     
     void initTerritoriesByNation(std::unordered_set<Territory*> territories);
 };

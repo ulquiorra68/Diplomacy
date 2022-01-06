@@ -8,7 +8,8 @@ enum Color {
     Yellow = 0xffff00ff,
     Cyan   = 0x00ffffff,
     Black  = 0x000000ff,
-    White  = 0xffffffff
+    White  = 0xffffffff,
+    Gray   = 0x77777777
 };
 
 #endif

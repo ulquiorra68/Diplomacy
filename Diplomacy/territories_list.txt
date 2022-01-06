@@ -1,57 +1,57 @@
-portugal neutral true spain
-spain neutral true portugal gascony marseilles n.africa
-gascony france false spain marseilles burgundy paris brest
-marseilles france true spain gascony burgundy piemonte
-burgundy france false gascony marseilles paris picardy belgium ruhr munich
-paris france true gascony burgundy brest picardy
-brest france true gascony paris picardy
-picardy france false brest paris burgundy belgium
-belgium neutral true picardy burgundy ruhr holland
-holland neutral true belgium ruhr kiel
-ruhr germany false holland belgium burgundy munich kiel
-kiel germany true holland ruhr berlin munich denmark
-munich germany true ruhr kiel berlin silesia bohemia tyrolia
-berlin germany true kiel munich silesia prussia
-silesia germany false munich berlin prussia warsaw bohemia galicia
-prussia germany false silesia warsaw livonia berlin
-piemonte italy false marseilles tyrolia venezia tuscany
-venezia italy true piemonte tuscany roma apulia tyrolia trieste
-tuscany italy false piemonte venezia roma
-roma italy true tuscany venezia apulia naples
-apulia italy false venezia roma naples
-naples italy true roma apulia tunis
-tyrolia austria false piemonte venezia munich bohemia vienna trieste
-bohemia austria false munich silesia tyrolia vienna galicia
-trieste austria true tyrolia vienna budapest serbia albania
-vienna austria true tyrolia bohemia galicia budapest trieste
-galicia austria false bohemia vienna budapest warsaw ukraine romania
-budapest austria true vienna trieste serbia romania galicia
-albania neutral false trieste serbia greece
-serbia neutral true trieste budapest romania bulgaria greece albania
-romania neutral true budapest galicia ukraine sevastopol serbia bulgaria
-bulgaria neutral true serbia romania greece constantinople
-greece neutral true albania serbia bulgaria
-constantinople turkey true bulgaria ankara smyrna
-ankara turkey true constantinople smyrna armenia
-smyrna turkey true constantinople ankara armenia syria
-armenia turkey false ankara smyrna sevastopol syria
-syria turkey false smyrna armenia
-sevastopol russia true armenia moscow ukraine romania
-ukraine russia false galicia romania sevastopol moscow warsaw
-moscow russia true sevastopol ukraine warsaw livonia st.petersburg
-warsaw russia true prussia silesia galicia ukraine moscow livonia
-livonia russia false prussia warsaw moscow st.petersburg
-st.petersburg russia true moscow livonia finland norway
-finland russia false st.petersburg sweden norway
-sweden neutral true norway finland denmark
-norway neutral true sweden finland st.petersburg denmark
-denmark neutral true sweden norway kiel
-ireland england false wales liverpool clyde
-wales england false london ireland york liverpool
-london england true york wales
-york england false london wales liverpool edinburgh
-liverpool england true ireland wales york clyde edinburgh
-clyde england false ireland liverpool edinburgh
-edinburgh england true clyde liverpool york
-n.africa neutral false spain tunis
-tunis neutral true n.africa naples
+portugal neutral true 1 spain
+spain neutral true 4 portugal gascony marseilles n.africa
+gascony france false 5 spain marseilles burgundy paris brest
+marseilles france true 4 spain gascony burgundy piemonte
+burgundy france false 7 gascony marseilles paris picardy belgium ruhr munich
+paris france true 4 gascony burgundy brest picardy
+brest france true 3 gascony paris picardy
+picardy france false 4 brest paris burgundy belgium
+belgium neutral true 4 picardy burgundy ruhr holland
+holland neutral true 3 belgium ruhr kiel
+ruhr germany false 5 holland belgium burgundy munich kiel
+kiel germany true 5 holland ruhr berlin munich denmark
+munich germany true 6 ruhr kiel berlin silesia bohemia tyrolia
+berlin germany true 4 kiel munich silesia prussia
+silesia germany false 6 munich berlin prussia warsaw bohemia galicia
+prussia germany false 4 silesia warsaw livonia berlin
+piemonte italy false 4 marseilles tyrolia venezia tuscany
+venezia italy true 6 piemonte tuscany roma apulia tyrolia trieste
+tuscany italy false 3 piemonte venezia roma
+roma italy true 4 tuscany venezia apulia naples
+apulia italy false 3 venezia roma naples
+naples italy true 3 roma apulia tunis
+tyrolia austria false 6 piemonte venezia munich bohemia vienna trieste
+bohemia austria false 5 munich silesia tyrolia vienna galicia
+trieste austria true 5 tyrolia vienna budapest serbia albania
+vienna austria true 5 tyrolia bohemia galicia budapest trieste
+galicia austria false 6 bohemia vienna budapest warsaw ukraine romania
+budapest austria true 5 vienna trieste serbia romania galicia
+albania neutral false 3 trieste serbia greece
+serbia neutral true 6 trieste budapest romania bulgaria greece albania
+romania neutral true 6 budapest galicia ukraine sevastopol serbia bulgaria
+bulgaria neutral true 4 serbia romania greece constantinople
+greece neutral true 3 albania serbia bulgaria
+constantinople turkey true 3 bulgaria ankara smyrna
+ankara turkey true 3 constantinople smyrna armenia
+smyrna turkey true 4 constantinople ankara armenia syria
+armenia turkey false 4 ankara smyrna sevastopol syria
+syria turkey false 2 smyrna armenia
+sevastopol russia true 4 armenia moscow ukraine romania
+ukraine russia false 5 galicia romania sevastopol moscow warsaw
+moscow russia true 5 sevastopol ukraine warsaw livonia st.petersburg
+warsaw russia true 6 prussia silesia galicia ukraine moscow livonia
+livonia russia false 4 prussia warsaw moscow st.petersburg
+st.petersburg russia true 4 moscow livonia finland norway
+finland russia false 3 st.petersburg sweden norway
+sweden neutral true 3 norway finland denmark
+norway neutral true 4 sweden finland st.petersburg denmark
+denmark neutral true 3 sweden norway kiel
+ireland england false 3 wales liverpool clyde
+wales england false 4 london ireland york liverpool
+london england true 2 york wales
+york england false 4 london wales liverpool edinburgh
+liverpool england true 5 ireland wales york clyde edinburgh
+clyde england false 3 ireland liverpool edinburgh
+edinburgh england true 3 clyde liverpool york
+n.africa neutral false 2 spain tunis
+tunis neutral true 2 n.africa naples

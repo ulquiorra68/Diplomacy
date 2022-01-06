@@ -29,6 +29,7 @@ public:
 	bool IsCapital() { return m_CapitalFlag; }
 	void SetCapital(bool isCap) { m_CapitalFlag = isCap; }
 	void SetBorders(std::vector<Territory*> terr) { m_Borders = terr; }
+	std::vector<Territory*> GetBorders() { return m_Borders; };
 	void SetButton(QPushButton* pushButton);
 	int getXpos() { return m_PositionX; };
 	int getYpos() { return m_PositionY; };
@@ -36,9 +37,12 @@ public:
 	std::string GetStringColor(Color color);
 
 	int numOfTanks() { return numOfTanksOn; }
+	void setNumOfTanks() { numOfTanksOn = 1; }
 	void decreaseNumOfTanks() { numOfTanksOn--; }
 	void increaseNumOfTanks() { numOfTanksOn++; }
 	QPushButton* pushButton() const;
+	void reDrawButtonText();
+	bool isBoarder(Territory* terr);
 
 
 	void DrawCircle();

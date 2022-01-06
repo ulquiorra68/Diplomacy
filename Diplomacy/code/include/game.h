@@ -11,10 +11,11 @@
 class Game
 {
 private:
-    std::vector<Player*> p_players;
+    QVector<Player*> p_players;
     std::unordered_set<Territory*> p_territories;
     Player* p_currPlayer;
     int p_counter;
+
 
 public:
     Game() {};
@@ -22,7 +23,10 @@ public:
     ~Game();
 
     void start(std::vector<QPushButton*> buttons);
+    void reDrawButtonsText();
+    void setTerritoriesColor();
     void end(Player* p);
+    std::unordered_set<Territory*> getTerritories() { return p_territories; };
 
     void playMove(Player* p);
     void attack(Territory* att, Territory* def);
@@ -31,11 +35,12 @@ public:
     void initTerritories();
     void initBordersAndCapitals();
     void setInitialTanks();
-    bool playerSetTanks(Player* player);
+    void countPlayerTanks();
     int getCounter();
     void setCounter(int value);
+    void setPlayers(QVector<Player*> players) { p_players = players; };
 
-    std::vector<Player*> players();
+    QVector<Player*> players();
    // unordered_set<Territory*> territories;
 
     Player* currPlayer();

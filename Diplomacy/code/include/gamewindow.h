@@ -22,6 +22,8 @@ public slots:
 
 public:
     GameWindow(MainWindow *parent = nullptr);
+    void onTerritoryButton(QPushButton* btn);
+    
     ~GameWindow() {};
 
     MainWindow *mw;
@@ -29,6 +31,9 @@ public:
 
 private:
     Ui::GameWindow *ui;
+    int currentMove = 0; // 1 - attack, 2 - help, 3 - move
+    Territory* startingTerritory = nullptr;
+    Territory* endingTerritory = nullptr;
 };
 
 #endif // GAMEWINDOW_H

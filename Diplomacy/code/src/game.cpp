@@ -16,13 +16,9 @@ void Game::start(vector<QPushButton*> buttons)
         buttons.pop_back();
     }
 
-   // setTestPlayers();
-    for (int i = 1; i <= 5; i++)
+    for (Player* player : p_players)
     {
-        string pname = "Player_" + to_string(i);
-        Player *p = new Player(pname, Yellow, true, Russia);
-        p->initTerritoriesByNation(p_territories);
-        p_players.push_back(p);
+        player->initTerritoriesByNation(p_territories);
     }
 
     p_counter = 0;
@@ -31,7 +27,32 @@ void Game::start(vector<QPushButton*> buttons)
         setCurrPlayer(p_players[0]);
 
     setInitialTanks();
+    setTerritoriesColor();
+    reDrawButtonsText();
     
+}
+
+void Game::reDrawButtonsText() {
+    for (Territory* terr : p_territories)
+    {
+        terr->reDrawButtonText();
+    }
+
+}
+
+
+void Game::setTerritoriesColor() {
+
+    for (Territory* terr : p_territories)
+    {
+        Color col = Gray;
+        if(terr->GetPlayerBelonging())
+         col = terr->GetPlayerBelonging()->color();
+  
+        terr->setButtonColor(col);
+    }
+
+
 }
 
 void Game::end(Player *p)
@@ -46,23 +67,20 @@ void Game::playMove(Player *p)
 
 void Game::setInitialTanks() {
     
-    if (!playerSetTanks(currPlayer()))
+    for (Territory* terr : p_territories)
     {
-        string out;
-        out = "Set init tanks player: " + currPlayer()->name() + "/n";    
-        out += ".";
-    } 
+        if (terr->IsCapital())
+            terr->setNumOfTanks();
+    }
 }   
 
-bool Game::playerSetTanks(Player* player)
-{
-    if (player->getNumOfInitTanksLeft() == 0)
-        return true;
-    
-    return false;
+void Game::countPlayerTanks() {
+
+    for (Player* player : p_players)
+        player->sumAllTanks();
 }
 
-vector<Player*> Game::players()
+QVector<Player*> Game::players()
 {
     return p_players;
 }
