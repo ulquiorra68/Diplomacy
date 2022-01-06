@@ -9,9 +9,9 @@ void UsersWindow::onOk()
 {
     QVector<Player *> players;
 
-    Player* p1;// = new Player();
-    Player* p2;// = new Player();
-    Player* p3;// = new Player();
+    Player* p1;
+    Player* p2;
+    Player* p3;
 
     if (ui->lineEdit->text() != "")
     {
@@ -48,7 +48,7 @@ void UsersWindow::onOk()
 
     if (ui->lineEdit_4->isEnabled())
     {
-        Player *p4 = new Player();
+        Player *p4;
         if (ui->lineEdit_4->text() != "")
         {
             p4 = new Player((ui->lineEdit_4->text()).toStdString(), Yellow, false, Germany);
@@ -62,7 +62,7 @@ void UsersWindow::onOk()
 
     if (ui->lineEdit_5->isEnabled())
     {
-        Player *p5 = new Player();
+        Player *p5;
         if (ui->lineEdit_5->text() != "")
         {
             p5 = new Player((ui->lineEdit_5->text()).toStdString(), Cyan, false, England);
@@ -76,7 +76,7 @@ void UsersWindow::onOk()
 
     if (ui->lineEdit_6->isEnabled())
     {
-        Player *p6 = new Player();
+        Player *p6;
         if (ui->lineEdit_6->text() != "")
         {
             p6 = new Player((ui->lineEdit_6->text()).toStdString(), Black, false, Italy);
@@ -90,7 +90,7 @@ void UsersWindow::onOk()
 
     if (ui->lineEdit_7->isEnabled())
     {
-        Player *p7 = new Player();
+        Player *p7;
         if (ui->lineEdit_7->text() != "")
         {
             p7 = new Player((ui->lineEdit_7->text()).toStdString(), White, false, Turkey);
@@ -101,7 +101,7 @@ void UsersWindow::onOk()
         }
         players.insert(6, p7);
     }
-    setPlayers(players);
+    mw->setPlayers(players);
 
     p_ready = true;
     delete this;
@@ -153,14 +153,4 @@ UsersWindow::UsersWindow(MainWindow *parent) :
 UsersWindow::~UsersWindow()
 {
     delete ui;
-}
-
-const QVector<Player*> &UsersWindow::players() const
-{
-    return p_players;
-}
-
-void UsersWindow::setPlayers(const QVector<Player *> &newPlayers)
-{
-    p_players = newPlayers;
 }

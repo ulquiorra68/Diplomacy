@@ -21,9 +21,6 @@ public:
     UsersWindow(MainWindow *parent = nullptr);
     ~UsersWindow();
 
-    const QVector<Player*> &players() const;
-    void setPlayers(const QVector<Player *> &newPlayers);
-
     bool ready() { return p_ready; };
     void setReady(bool flag) { p_ready = flag; };
 
@@ -32,8 +29,6 @@ public:
 private:
     Ui::UsersWindow *ui;
     MainWindow* mw;
-
-    QVector<Player*> p_players;
 
     bool p_ready;
 
