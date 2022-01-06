@@ -17,6 +17,7 @@ GameWindow::GameWindow(MainWindow *parent) :
     connect(ui->finishButton, &QPushButton::clicked, this, &GameWindow::onFinish);
     connect(ui->exitButton, &QPushButton::clicked, this, &GameWindow::onExit);
     connect(ui->clearButton, &QPushButton::clicked, this, &GameWindow::onClear);
+    connect(ui->helpAttackButton, &QPushButton::clicked, this, &GameWindow::onHelpAttack);
 
     QPixmap bkgnd(":/images/map.jpg");
     bkgnd = bkgnd.scaled(QSize(1407, 1080), Qt::KeepAspectRatio);
@@ -197,6 +198,11 @@ void GameWindow::onExit()
 }
 
 void GameWindow::onClear()
+{
+
+}
+
+void GameWindow::onHelpAttack()
 {
 
 }
