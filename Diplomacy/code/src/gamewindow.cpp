@@ -35,7 +35,7 @@ GameWindow::GameWindow(MainWindow *parent) :
     game = new Game();
     game->start(territoryButtons);
 
-    ui->nameLabel->setText(QString::fromStdString(game->currPlayer()->name()));
+    ui->nameLabel->setText(QString::fromStdString(mw->players()[0]->name()));
 }
 
 void GameWindow::onAttack()
@@ -55,9 +55,11 @@ void GameWindow::onChangePosition()
 
 void GameWindow::onFinish()
 {
+    if (ui->logLabel->text().size() > 700)
+        ui->logLabel->clear();
     game->setCounter((game->getCounter()+1)%(mw->getNumSpinBox()));
     int index = game->getCounter();
-    game->setCurrPlayer(game->players()[index]);
+    game->setCurrPlayer(mw->players()[index]);
     ui->nameLabel->setText(QString::fromStdString(game->currPlayer()->name()));
     ui->logLabel->setText(ui->logLabel->text() + "\nIgrac " + QString::fromStdString(game->currPlayer()->name()) + " je sad na potezu");
 }
