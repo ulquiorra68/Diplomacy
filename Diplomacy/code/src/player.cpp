@@ -7,7 +7,8 @@ const std::string &Player::name() const
 
 void Player::addMove(Territory* start, Territory* end, int moveType)
 {
-
+    Move* m = new Move(this, start, end, moveType);
+    p_moves.insert(m);
 }
 
 void Player::setName(const std::string &newName)

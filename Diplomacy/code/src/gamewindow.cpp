@@ -183,11 +183,20 @@ void GameWindow::onFinish()
     game->setCounter((game->getCounter()+1)%(mw->getNumSpinBox()));
     int index = game->getCounter();
     game->setCurrPlayer(mw->players()[index]);
-    ui->nameLabel->setText(QString::fromStdString(game->currPlayer()->name()));
-    ui->logLabel->setText(ui->logLabel->text() + "\nIgrac " + QString::fromStdString(game->currPlayer()->name()) + " je sad na potezu");
+    if (index == 0)
+    {
+        ui->logLabel->setText(ui->logLabel->text() + "\nSvi igraci su zavrsili potez! Ishod poteza je sledeci: \n");
+        game->resolveWars();
+    }
+    else
+    {
+        ui->nameLabel->setText(QString::fromStdString(game->currPlayer()->name()));
+        ui->logLabel->setText(ui->logLabel->text() + "\nIgrac " + QString::fromStdString(game->currPlayer()->name()) + " je sad na potezu");
+    }
     currentMove = 0;
     startingTerritory = nullptr;
     endingTerritory = nullptr;
+
 }
 
 void GameWindow::onExit()

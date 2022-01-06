@@ -8,6 +8,7 @@
 #include "code/include/Color.h"
 #include "code/include/Nation.h"
 #include "code/include/Territory.h"
+#include "code/include/Move.h"
 
 class Territory;
 
@@ -28,6 +29,8 @@ private:
     bool p_wantsToHelp;
 
     std::unordered_set <Territory*> p_territories;
+    std::unordered_set <Move*> p_moves;
+
 
 public:
     Player() {};
@@ -37,9 +40,12 @@ public:
     const std::string &name() const;
 
     void addMove(Territory* start, Territory* end, int moveType);
+    void removeAllMoves() { if(!p_moves.empty()) p_moves.clear(); };
+    std::unordered_set <Move*> getPlayerMoves() { return p_moves; };
 
     void addTerritory(Territory* t);
     void removeTerritory(Territory* t);
+
 
     void setName(const std::string &newName);
 

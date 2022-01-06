@@ -239,3 +239,89 @@ void Game::setCounter(int value)
 {
     p_counter = value;
 }
+
+void Game::resolveWars()
+{
+    
+    for (Player* player : p_players)
+    {
+        for (Move* move : player->getPlayerMoves())
+        {
+            //first do all repositioning moves
+            if (move->getType() == 3)
+            {
+                move->getStartTerritory()->decreaseNumOfTanks();
+                move->getEndTerritory()->increaseNumOfTanks();
+            }
+            else
+            //second help moves
+            if (move->getType() == 2)
+            {
+                if (!isUnderAttack(move->getStartTerritory()))
+                {
+                    move->getStartTerritory()->decreaseNumOfTanks();
+                    move->getEndTerritory()->increaseNumOfTanks();
+                }
+            }
+            else
+            //then attack moves
+            if (move->getType() == 1)
+            {
+                if (!isUnderAttack(move->getStartTerritory()))
+                {
+                    int numOfAttacks = numOfAttackers(move->getEndTerritory());
+                  
+                      if (move->getEndTerritory()->numOfTanks() < numOfAttacks)
+                      {
+                         // move->getStartTerritory()->decreaseNumOfTanks();
+                          move->getEndTerritory()->setNumOfTanks();
+                          move->getEndTerritory()->SetPlayerBelonging(move->getPlayer());
+                      }
+                }  
+            }
+            
+            //after attacks, return tanks back from help
+            if (move->getType() == 2)
+            {
+                move->getStartTerritory()->setNumOfTanks();
+                move->getEndTerritory()->decreaseNumOfTanks();
+            }
+
+
+        }
+    }
+
+    setTerritoriesColor();
+    reDrawButtonsText();
+
+    for (Player* p : p_players)
+        p->removeAllMoves();
+}
+
+bool Game::isUnderAttack(Territory* terr)
+{
+    for (Player* player : p_players)
+    {
+        for (Move* move : player->getPlayerMoves())
+        {
+            if (move->getType() == 1 && move->getEndTerritory() == terr)
+                return true;
+        }
+    }
+    return false;
+}
+
+int Game::numOfAttackers(Territory* terr)
+{
+    int count = 0;
+    for (Player* player : p_players)
+    {
+        for (Move* move : player->getPlayerMoves())
+        {
+            if (move->getType() == 1 && move->getEndTerritory() == terr && !isUnderAttack(move->getStartTerritory()))
+                count++;
+        }
+    }
+
+    return count;
+}

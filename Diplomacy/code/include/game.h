@@ -39,6 +39,11 @@ public:
     int getCounter();
     void setCounter(int value);
     void setPlayers(QVector<Player*> players) { p_players = players; };
+    void resolveWars();
+
+    bool isUnderAttack(Territory* terr);
+
+    int numOfAttackers(Territory* terr);
 
     QVector<Player*> players();
    // unordered_set<Territory*> territories;
