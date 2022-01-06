@@ -19,6 +19,8 @@ public slots:
     void onChangePosition();
     void onFinish();
     void onExit();
+    void onClear();
+    void onHelpAttack();
 
 public:
     GameWindow(MainWindow *parent = nullptr);
