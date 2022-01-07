@@ -36,6 +36,8 @@ private:
     int currentMove = 0; // 1 - attack, 2 - help, 3 - move
     Territory* startingTerritory = nullptr;
     Territory* endingTerritory = nullptr;
+
+    std::vector<QPushButton*> territoryButtons;
 };
 
 #endif // GAMEWINDOW_H

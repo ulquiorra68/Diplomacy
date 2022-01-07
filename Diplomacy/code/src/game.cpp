@@ -40,6 +40,16 @@ void Game::reDrawButtonsText() {
 
 }
 
+void Game::performWin(Player* winner)
+{
+    Color winnerColor = winner->color();
+    for (Territory* terr : p_territories)
+    {
+        terr->setButtonColor(winnerColor);
+    }
+
+}
+
 
 void Game::setTerritoriesColor() {
 
@@ -69,7 +79,7 @@ void Game::setInitialTanks() {
     
     for (Territory* terr : p_territories)
     {
-        if (terr->IsCapital())
+        if (terr->IsCapital() && terr->GetPlayerBelonging())
             terr->setNumOfTanks();
     }
 }   
@@ -240,62 +250,103 @@ void Game::setCounter(int value)
     p_counter = value;
 }
 
-void Game::resolveWars()
+std::string Game::resolveWars()
 {
-    
+    logs = "WarResults: \n";
+    std::vector<Move*> allMoves;
+
     for (Player* player : p_players)
     {
         for (Move* move : player->getPlayerMoves())
         {
-            //first do all repositioning moves
-            if (move->getType() == 3)
-            {
-                move->getStartTerritory()->decreaseNumOfTanks();
-                move->getEndTerritory()->increaseNumOfTanks();
-            }
-            else
-            //second help moves
-            if (move->getType() == 2)
-            {
-                if (!isUnderAttack(move->getStartTerritory()))
-                {
-                    move->getStartTerritory()->decreaseNumOfTanks();
-                    move->getEndTerritory()->increaseNumOfTanks();
-                }
-            }
-            else
-            //then attack moves
-            if (move->getType() == 1)
-            {
-                if (!isUnderAttack(move->getStartTerritory()))
-                {
-                    int numOfAttacks = numOfAttackers(move->getEndTerritory());
-                  
-                      if (move->getEndTerritory()->numOfTanks() < numOfAttacks)
-                      {
-                         // move->getStartTerritory()->decreaseNumOfTanks();
-                          move->getEndTerritory()->setNumOfTanks();
-                          move->getEndTerritory()->SetPlayerBelonging(move->getPlayer());
-                      }
-                }  
-            }
-            
-            //after attacks, return tanks back from help
-            if (move->getType() == 2)
-            {
-                move->getStartTerritory()->setNumOfTanks();
-                move->getEndTerritory()->decreaseNumOfTanks();
-            }
-
-
+            allMoves.push_back(move);
         }
     }
 
+    for (Move* move : allMoves)
+    {
+        //first do all repositioning moves
+        if (move->getType() == 3)
+        {
+            move->getStartTerritory()->decreaseNumOfTanks();
+            move->getEndTerritory()->increaseNumOfTanks();
+            logs = logs + "Player [" + move->getPlayer()->name() + "] MOVE from: [" + move->getStartTerritory()->GetName() + "] to [" + move->getEndTerritory()->GetName() + " ] \n";
+        }
+    }
+    for (Move* move : allMoves)
+    {
+        //second help moves
+        if (move->getType() == 2)
+        {
+            logs = logs + "Player [" + move->getPlayer()->name() + "] HELP from: [" + move->getStartTerritory()->GetName() + "] to [" + move->getEndTerritory()->GetName() + " ]";
+
+            if (!isUnderAttack(move->getStartTerritory()))
+            {
+                move->getStartTerritory()->decreaseNumOfTanks();
+                move->getEndTerritory()->increaseNumOfTanks();
+                logs = logs + " \n";
+            }
+            else
+            {
+                logs = logs + " FAILED, territory was under attack.\n";
+            }
+        }
+    }
+    for (Move* move : allMoves)
+    {
+        //then attack moves
+        if (move->getType() == 1)
+        {
+            logs = logs + "Player [" + move->getPlayer()->name() + "] ATTACK from: [" + move->getStartTerritory()->GetName() + "] to [" + move->getEndTerritory()->GetName() + " ]";
+
+            if (!isUnderAttack(move->getStartTerritory()))
+            {
+                int numOfAttacks = numOfAttackers(move->getEndTerritory());
+
+                if (move->getEndTerritory()->numOfTanks() < numOfAttacks)
+                {
+                    // move->getStartTerritory()->decreaseNumOfTanks();
+                    move->getEndTerritory()->setNumOfTanks();
+                    Player* loser = move->getEndTerritory()->GetPlayerBelonging();
+                    if (loser)
+                        loser->removeTerritory(move->getEndTerritory());
+                    move->getEndTerritory()->SetPlayerBelonging(move->getPlayer());
+                    move->getPlayer()->addTerritory(move->getEndTerritory());
+
+                    logs = logs + "\n";
+                }
+                else
+                {
+                    logs = logs + " FAILED, defence won.\n";
+                }
+            }
+            else
+            {
+                logs = logs + " FAILED, territory was under attack.\n";
+            }
+        }
+    }
+    for (Move* move : allMoves)
+    {
+        //after attacks, return tanks back from help
+        if (move->getType() == 2)
+        {
+            move->getStartTerritory()->setNumOfTanks();
+            move->getEndTerritory()->decreaseNumOfTanks();
+        }
+    }
+
+
+
+    for (Player* p : p_players)
+    {
+        p->removeAllMoves();
+        p->resolveNumOfTanks();
+    }
     setTerritoriesColor();
     reDrawButtonsText();
 
-    for (Player* p : p_players)
-        p->removeAllMoves();
+    return logs;
 }
 
 bool Game::isUnderAttack(Territory* terr)
@@ -304,7 +355,7 @@ bool Game::isUnderAttack(Territory* terr)
     {
         for (Move* move : player->getPlayerMoves())
         {
-            if (move->getType() == 1 && move->getEndTerritory() == terr)
+            if ((move->getType() == 1 || move->getType() == 4 ) && move->getEndTerritory() == terr)
                 return true;
         }
     }
@@ -318,7 +369,7 @@ int Game::numOfAttackers(Territory* terr)
     {
         for (Move* move : player->getPlayerMoves())
         {
-            if (move->getType() == 1 && move->getEndTerritory() == terr && !isUnderAttack(move->getStartTerritory()))
+            if ((move->getType() == 1 || move->getType() == 4) && move->getEndTerritory() == terr && !isUnderAttack(move->getStartTerritory()))
                 count++;
         }
     }

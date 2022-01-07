@@ -15,6 +15,7 @@ private:
     std::unordered_set<Territory*> p_territories;
     Player* p_currPlayer;
     int p_counter;
+    std::string logs;
 
 
 public:
@@ -24,6 +25,7 @@ public:
 
     void start(std::vector<QPushButton*> buttons);
     void reDrawButtonsText();
+    void performWin(Player* winner);
     void setTerritoriesColor();
     void end(Player* p);
     std::unordered_set<Territory*> getTerritories() { return p_territories; };
@@ -39,7 +41,7 @@ public:
     int getCounter();
     void setCounter(int value);
     void setPlayers(QVector<Player*> players) { p_players = players; };
-    void resolveWars();
+    std::string resolveWars();
 
     bool isUnderAttack(Territory* terr);
 

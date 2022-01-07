@@ -109,6 +109,131 @@ void Player::sumAllTanks()
     setNumOfAllTanks(tanks);
 }
 
+int Player::sumAllUsingTanks()
+{
+    int sum = 0;
+    for (Territory* terr : p_territories)
+    {
+        if (terr->numOfTanks() > 0)
+            sum++;
+    }
+
+    return sum;
+}
+
+bool Player::isArmyMoveAlreadyMade(Territory* clicked)
+{
+    for (Move* move : p_moves)
+    {
+        if ( move->getStartTerritory()->GetName() == clicked->GetName())
+            return true;
+    }
+
+    return false;
+}
+
+std::string Player::GetNationalBelongingText()
+{
+    std::string nation_string;
+    switch (p_playerNationality) {
+    case Russia:
+        nation_string = "Russia";
+        break;
+    case Turkey:
+        nation_string = "Turkey";
+        break;
+    case Germany:
+        nation_string = "Germany";
+        break;
+    case Austria:
+        nation_string = "Austria";
+        break;
+    case France:
+        nation_string = "France";
+        break;
+    case England:
+        nation_string = "England";
+        break;
+    case Italy:
+        nation_string = "Italy";
+        break;
+    case Neutral:
+        nation_string = "Neutral";
+    default:
+        nation_string = "Unknown National Belonging";
+        break;
+    }
+
+    return nation_string;
+}
+
+std::string Player::GetColorText()
+{
+    std::string nation_string;
+    switch (p_color) {
+    case Blue:
+        nation_string = "blue";
+        break;
+    case Red:
+        nation_string = "red";
+        break;
+    case Green:
+        nation_string = "green";
+        break;
+    case White:
+        nation_string = "white";
+        break;
+    case Black:
+        nation_string = "black";
+        break;
+    case Cyan:
+        nation_string = "cyan";
+        break;
+    case Yellow:
+        nation_string = "yellow";
+        break;
+    default:
+        nation_string = " ";
+        break;
+    }
+
+    return nation_string;
+}
+
+void Player::resolveNumOfTanks()
+{
+    sumAllTanks();
+
+    if (!numOfAllTanks == 0)
+    {
+
+        int useTanks = sumAllUsingTanks();
+        while (useTanks > numOfAllTanks)
+        {
+            for (Territory* terr : p_territories)
+            {
+                if (terr->numOfTanks() == 1)
+                {
+                    terr->decreaseNumOfTanks();
+                    useTanks--;
+                    break;
+                }
+            }
+        }
+    }
+}
+
+void Player::performLosing()
+{
+    for (Territory* terr : p_territories)
+    {
+        terr->SetPlayerBelonging(nullptr);
+        terr->setNumOfTanks();
+        terr->decreaseNumOfTanks();
+    }
+    p_territories.clear();
+}
+
 void Player::setWantsToHelp(bool flag)
 {
     p_wantsToHelp = flag;

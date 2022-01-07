@@ -81,6 +81,17 @@ public:
     void setTerritories(const std::unordered_set<Territory *> &newTerritories);
 
     void sumAllTanks();
+    int sumAllUsingTanks();
+
+    bool isArmyMoveAlreadyMade(Territory* clicked);
+
+    std::string GetNationalBelongingText();
+
+    std::string GetColorText();
+
+    void resolveNumOfTanks();
+
+    void performLosing();
     
     void initTerritoriesByNation(std::unordered_set<Territory*> territories);
 };
