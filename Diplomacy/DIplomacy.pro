@@ -22,6 +22,7 @@ SOURCES += \
 
 HEADERS += \
     code/include/Color.h \
+    code/include/Move.h \
     code/include/Nation.h \
     code/include/Territory.h \
     code/include/game.h \
