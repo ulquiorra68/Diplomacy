@@ -46,6 +46,9 @@
             <family>MV Boli</family>
            </font>
           </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: #c4b69f;</string>
+          </property>
           <property name="text">
            <string>Play</string>
           </property>
@@ -64,6 +67,9 @@
             <family>MV Boli</family>
            </font>
           </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: #c4b69f;</string>
+          </property>
           <property name="text">
            <string>Options</string>
           </property>
@@ -75,6 +81,9 @@
            <font>
             <family>MV Boli</family>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: #c4b69f;</string>
           </property>
           <property name="text">
            <string>Quit</string>
@@ -93,7 +102,7 @@
      <x>0</x>
      <y>0</y>
      <width>705</width>
-     <height>20</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>

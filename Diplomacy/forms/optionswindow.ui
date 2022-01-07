@@ -62,6 +62,9 @@
    </item>
    <item row="3" column="1">
     <widget class="QSpinBox" name="numberSpinBox">
+     <property name="styleSheet">
+      <string notr="true">background-color: white;</string>
+     </property>
      <property name="minimum">
       <number>3</number>
      </property>
